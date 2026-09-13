@@ -1,10 +1,11 @@
-const CACHE_NAME = "money-plan-v2";
+const CACHE_NAME = "money-plan-v3";
 
 const FILES = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./icon.svg"
+  "./android-chrome-192x192.png",
+  "./android-chrome-512x512.png"
 ];
 
 self.addEventListener("install", event => {
