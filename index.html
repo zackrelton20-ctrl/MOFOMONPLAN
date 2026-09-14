@@ -13,19 +13,10 @@
   <title>My Money Plan</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
-
-  <link
-    rel="icon"
-    href="./android-chrome-192x192.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="./android-chrome-192x192.png"
-  >
+  <link rel="icon" href="./android-chrome-192x192.png">
+  <link rel="apple-touch-icon" href="./android-chrome-192x192.png">
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -41,6 +32,7 @@
       --green: #218653;
       --green-bg: #EAF6EF;
       --yellow: #FFF1B8;
+      --yellow-bg: #FFF8DA;
       --red: #B42318;
       --red-bg: #FFF1F0;
       --border: #D8E1EA;
@@ -48,6 +40,7 @@
 
     body {
       margin: 0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -145,11 +138,8 @@
 
     .metric strong {
       display: block;
-
-      font-size: 23px;
-
       margin-top: 8px;
-
+      font-size: 22px;
       word-break: break-word;
     }
 
@@ -202,31 +192,21 @@
 
     .money-input {
       background: var(--yellow);
-
       font-size: 27px;
-
       text-align: center;
-
       font-weight: 800;
     }
 
     .row {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
     .split {
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       align-items: center;
-
       gap: 12px;
 
       padding: 12px 13px;
@@ -240,16 +220,25 @@
 
     .split span {
       color: var(--muted);
-
       font-weight: 700;
-
       font-size: 14px;
     }
 
     .split strong {
       font-size: 17px;
-
       text-align: right;
+    }
+
+    .essential-row {
+      background: var(--yellow-bg);
+    }
+
+    .warning-row {
+      background: var(--red-bg);
+    }
+
+    .good-row {
+      background: var(--green-bg);
     }
 
     button {
@@ -258,17 +247,11 @@
 
     .btn {
       width: 100%;
-
       border: none;
-
       padding: 15px;
-
       border-radius: 14px;
-
       font-size: 16px;
-
       font-weight: 800;
-
       cursor: pointer;
     }
 
@@ -303,29 +286,12 @@
       display: block;
     }
 
-    .install h3,
-    .setup-card h3 {
-      margin: 0 0 5px;
-    }
-
-    .install p,
-    .setup-card p {
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.45;
-
-      margin:
-        0 0 10px;
-    }
-
     .setup-card {
       background:
         linear-gradient(
           135deg,
           #FFF8DA,
-          #FFFFFF
+          white
         );
 
       border-color: #EADFA6;
@@ -335,39 +301,97 @@
       display: none;
     }
 
+    .setup-card h3,
+    .install h3 {
+      margin: 0 0 5px;
+    }
+
+    .setup-card p,
+    .install p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+
     .progress {
       background: #E4EAF0;
-
       height: 14px;
-
       border-radius: 999px;
-
       overflow: hidden;
-
       margin: 10px 0;
     }
 
     .progress-bar {
       height: 100%;
-
       width: 0;
-
       background: var(--green);
-
       transition: .25s;
     }
 
     .progress-text {
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       gap: 10px;
-
       font-size: 12px;
-
       color: var(--muted);
+    }
+
+    .weekly-info {
+      text-align: center;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--yellow-bg);
+      margin-bottom: 12px;
+    }
+
+    .weekly-info small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .weekly-info strong {
+      display: block;
+      font-size: 25px;
+      margin-top: 4px;
+      color: var(--navy);
+    }
+
+    .weekly-info p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+
+    .warning {
+      display: none;
+      background: var(--red-bg);
+      color: var(--red);
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .warning.show {
+      display: block;
+    }
+
+    .bonus {
+      display: none;
+      background: var(--green-bg);
+      color: var(--green);
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .bonus.show {
+      display: block;
     }
 
     .history-row {
@@ -378,10 +402,7 @@
         #EDF1F5;
 
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       gap: 10px;
     }
 
@@ -391,32 +412,61 @@
 
     .history-row small {
       color: var(--muted);
-
       display: block;
-
       margin-top: 3px;
     }
 
     .delete {
       background: none;
-
       border: 0;
-
       color: var(--red);
-
       font-weight: 700;
-
       font-size: 12px;
-
       margin-top: 4px;
     }
 
     .empty {
       text-align: center;
-
       color: var(--muted);
-
       padding: 25px 5px;
+    }
+
+    .green {
+      color: var(--green);
+    }
+
+    .red {
+      color: var(--red);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .success-message {
+      display: none;
+
+      margin-top: 10px;
+
+      padding: 10px;
+
+      border-radius: 12px;
+
+      background: var(--green-bg);
+
+      color: var(--green);
+
+      font-weight: 700;
+
+      font-size: 13px;
+
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
     }
 
     .bottom-nav {
@@ -459,15 +509,10 @@
 
     .bottom-nav button {
       border: 0;
-
       background: transparent;
-
       padding: 11px 5px;
-
       border-radius: 12px;
-
       color: var(--muted);
-
       font-weight: 800;
     }
 
@@ -475,47 +520,6 @@
       background: var(--light);
       color: var(--navy);
     }
-
-    .green {
-      color: var(--green);
-    }
-
-    .red {
-      color: var(--red);
-    }
-
-    .hint {
-      color: var(--muted);
-
-      font-size: 12px;
-
-      line-height: 1.5;
-    }
-
-    .success-message {
-      display: none;
-
-      margin-top: 10px;
-
-      padding: 10px;
-
-      border-radius: 12px;
-
-      background: var(--green-bg);
-
-      color: var(--green);
-
-      font-weight: 700;
-
-      font-size: 13px;
-
-      text-align: center;
-    }
-
-    .success-message.show {
-      display: block;
-    }
-
   </style>
 </head>
 
@@ -527,10 +531,12 @@
 
   <header>
 
-    <h1>My Money Plan</h1>
+    <h1>
+      My Money Plan
+    </h1>
 
     <p>
-      Simple financial freedom tracker
+      Essentials first. Build wealth with the rest.
     </p>
 
   </header>
@@ -559,9 +565,8 @@
         </h3>
 
         <p>
-          Add this app to your home
-          screen and use it like a
-          normal app.
+          Add this app to your home screen
+          and use it like a normal app.
         </p>
 
         <button
@@ -575,7 +580,7 @@
 
 
 
-      <!-- NEW USER SETUP -->
+      <!-- FIRST-TIME SETUP -->
 
       <div
         id="setupCard"
@@ -587,10 +592,9 @@
         </h3>
 
         <p>
-          Enter your own monthly bills,
+          Enter your monthly bills + food,
           current savings and emergency
-          fund target to personalise
-          this app.
+          target first.
         </p>
 
         <button
@@ -604,9 +608,48 @@
 
 
 
-      <!-- TOP METRICS -->
+      <!-- TOP NUMBERS -->
 
       <div class="grid">
+
+
+        <div class="card metric">
+
+          <small>
+            Weekly essentials
+          </small>
+
+          <strong
+            id="topWeeklyEssential"
+          >
+            £0.00
+          </strong>
+
+        </div>
+
+
+
+        <div class="card metric">
+
+          <small>
+            Total invested
+          </small>
+
+          <strong
+            id="investmentTotal"
+          >
+            £0.00
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="grid">
+
 
         <div class="card metric">
 
@@ -623,19 +666,21 @@
         </div>
 
 
+
         <div class="card metric">
 
           <small>
-            Total invested
+            Monthly essentials
           </small>
 
           <strong
-            id="investmentTotal"
+            id="monthlyEssentialsTop"
           >
             £0.00
           </strong>
 
         </div>
+
 
       </div>
 
@@ -681,7 +726,7 @@
 
 
 
-      <!-- ADD WEEK -->
+      <!-- ADD THIS WEEK -->
 
       <h2>
         Add this week
@@ -706,7 +751,6 @@
             </select>
 
           </div>
-
 
 
           <div>
@@ -735,16 +779,71 @@
             Wages received
           </label>
 
-
           <input
             id="wage"
             class="money-input"
             type="number"
             inputmode="decimal"
-            step="0.01"
             min="0"
+            step="0.01"
             placeholder="£0.00"
           >
+
+        </div>
+
+
+
+        <div
+          class="weekly-info"
+          style="margin-top:14px"
+        >
+
+          <small>
+            Essentials needed this week
+          </small>
+
+          <strong
+            id="weeklyEssentialNeeded"
+          >
+            £0.00
+          </strong>
+
+          <p
+            id="weeklyEssentialExplanation"
+          >
+            Monthly bills + food ÷ 4
+          </p>
+
+        </div>
+
+
+
+        <div
+          id="essentialShortfallWarning"
+          class="warning"
+        >
+        </div>
+
+
+        <div
+          id="bonusWeekMessage"
+          class="bonus"
+        >
+        </div>
+
+
+
+        <div class="split essential-row">
+
+          <span>
+            Essentials funded
+          </span>
+
+          <strong
+            id="previewEssentials"
+          >
+            £0.00
+          </strong>
 
         </div>
 
@@ -753,11 +852,11 @@
         <div class="split">
 
           <span>
-            Essentials
+            Money left
           </span>
 
           <strong
-            id="previewEssentials"
+            id="previewRemaining"
           >
             £0.00
           </strong>
@@ -876,14 +975,14 @@
 
 
 
-        <div class="split">
+        <div class="split essential-row">
 
           <span>
-            Essentials allocated
+            Essentials required
           </span>
 
           <strong
-            id="monthEssentials"
+            id="monthEssentialsRequired"
           >
             £0.00
           </strong>
@@ -895,11 +994,11 @@
         <div class="split">
 
           <span>
-            Bills due
+            Essentials funded
           </span>
 
           <strong
-            id="monthBills"
+            id="monthEssentialsFunded"
           >
             £0.00
           </strong>
@@ -908,14 +1007,17 @@
 
 
 
-        <div class="split">
+        <div
+          id="monthShortfallRow"
+          class="split warning-row"
+        >
 
           <span>
-            After bills
+            Essentials shortfall
           </span>
 
           <strong
-            id="monthRemaining"
+            id="monthShortfall"
           >
             £0.00
           </strong>
@@ -955,11 +1057,42 @@
         </div>
 
 
+
+        <div class="split">
+
+          <span>
+            Holiday
+          </span>
+
+          <strong
+            id="monthHoliday"
+          >
+            £0.00
+          </strong>
+
+        </div>
+
+
+
+        <div class="split">
+
+          <span>
+            Fun / treats
+          </span>
+
+          <strong
+            id="monthFun"
+          >
+            £0.00
+          </strong>
+
+        </div>
+
+
       </div>
 
 
     </section>
-
 
 
 
@@ -970,11 +1103,9 @@
       class="view"
     >
 
-
       <h2>
         Saved weeks
       </h2>
-
 
       <div
         id="historyList"
@@ -987,9 +1118,7 @@
 
       </div>
 
-
     </section>
-
 
 
 
@@ -1013,7 +1142,6 @@
           Monthly bills + food
         </label>
 
-
         <input
           id="billsSetting"
           type="number"
@@ -1024,9 +1152,18 @@
         >
 
 
+        <p class="hint">
+
+          This is divided by 4 to calculate
+          your normal weekly essentials
+          requirement.
+
+        </p>
+
+
 
         <div
-          style="height:12px"
+          style="height:8px"
         >
         </div>
 
@@ -1035,7 +1172,6 @@
         <label>
           Current emergency savings
         </label>
-
 
         <input
           id="startingSetting"
@@ -1058,7 +1194,6 @@
         <label>
           Emergency fund target
         </label>
-
 
         <input
           id="targetSetting"
@@ -1087,39 +1222,42 @@
         </div>
 
 
-        <p class="hint">
-
-          A common emergency target is
-          around 3–6 months of essential
-          expenses.
-
-        </p>
-
-
       </div>
 
 
 
-
       <h2>
-        Money split
+        How money is split
       </h2>
 
 
       <div class="card">
 
 
-        <div class="split">
+        <div class="weekly-info">
 
-          <span>
+          <small>
             Essentials
-          </span>
+          </small>
 
           <strong>
-            49.07%
+            Fixed amount first
           </strong>
 
+          <p>
+            Monthly bills + food ÷ 4
+          </p>
+
         </div>
+
+
+        <p class="hint">
+
+          After your essentials are covered,
+          only the money left over is divided
+          between the four pots below.
+
+        </p>
 
 
 
@@ -1130,7 +1268,7 @@
           </span>
 
           <strong>
-            18.67%
+            36.65%
           </strong>
 
         </div>
@@ -1144,7 +1282,7 @@
           </span>
 
           <strong>
-            25.60%
+            50.26%
           </strong>
 
         </div>
@@ -1158,7 +1296,7 @@
           </span>
 
           <strong>
-            4.00%
+            7.85%
           </strong>
 
         </div>
@@ -1172,7 +1310,7 @@
           </span>
 
           <strong>
-            2.67%
+            5.24%
           </strong>
 
         </div>
@@ -1180,15 +1318,16 @@
 
         <p class="hint">
 
-          These percentages apply
-          automatically every time
-          wages are entered.
+          Week 5 is a bonus week if your
+          monthly essentials are already
+          covered. If you were short during
+          Weeks 1–4, Week 5 catches up that
+          shortfall first.
 
         </p>
 
 
       </div>
-
 
 
 
@@ -1224,10 +1363,9 @@
 
         <p class="hint">
 
-          Reset Entire Plan clears
-          bills, savings, target and
-          all wage entries from this
-          device.
+          Reset Entire Plan clears your
+          bills, savings, target and wage
+          history from this device.
 
         </p>
 
@@ -1245,10 +1383,9 @@
 
 
 
-<!-- BOTTOM NAVIGATION -->
+<!-- NAVIGATION -->
 
 <nav class="bottom-nav">
-
 
   <button
     class="active"
@@ -1257,20 +1394,17 @@
     Home
   </button>
 
-
   <button
     data-view="history"
   >
     History
   </button>
 
-
   <button
     data-view="settings"
   >
     Settings
   </button>
-
 
 </nav>
 
@@ -1279,34 +1413,31 @@
 <script>
 
 
-/* =========================
-   MONEY SPLIT
-========================= */
+/* ====================================
+   SPLIT OF MONEY LEFT AFTER ESSENTIALS
+==================================== */
 
-const percentages = {
-
-  essentials:
-    0.4906666667,
+const remainderPercentages = {
 
   emergency:
-    0.1866666667,
+    0.3664921466,
 
   investments:
-    0.256,
+    0.5026178010,
 
   holiday:
-    0.04,
+    0.0785340314,
 
   fun:
-    0.0266666667
+    0.0523560210
 
 };
 
 
 
-/* =========================
-   DEFAULTS FOR NEW USERS
-========================= */
+/* ====================================
+   NEW USER DEFAULTS
+==================================== */
 
 const defaults = {
 
@@ -1322,9 +1453,9 @@ const defaults = {
 
 
 
-/* =========================
-   LOAD SAVED DATA
-========================= */
+/* ====================================
+   LOAD EXISTING USER DATA
+==================================== */
 
 let data;
 
@@ -1350,7 +1481,8 @@ data = {
 
   bills:
     Number(
-      data.bills ?? defaults.bills
+      data.bills ??
+      defaults.bills
     ),
 
   startingSavings:
@@ -1373,9 +1505,9 @@ data = {
 
 
 
-/* =========================
-   MONEY FORMAT
-========================= */
+/* ====================================
+   GBP FORMAT
+==================================== */
 
 const money =
   new Intl.NumberFormat(
@@ -1388,9 +1520,9 @@ const money =
 
 
 
-/* =========================
-   SAVE DATA
-========================= */
+/* ====================================
+   SAVE
+==================================== */
 
 function saveData() {
 
@@ -1403,43 +1535,24 @@ function saveData() {
 
 
 
-/* =========================
-   SPLIT MONEY
-========================= */
+/* ====================================
+   WEEKLY ESSENTIAL BASE
+==================================== */
 
-function splitMoney(amount) {
+function weeklyEssentialBase() {
 
-  return {
-
-    essentials:
-      amount *
-      percentages.essentials,
-
-    emergency:
-      amount *
-      percentages.emergency,
-
-    investments:
-      amount *
-      percentages.investments,
-
-    holiday:
-      amount *
-      percentages.holiday,
-
-    fun:
-      amount *
-      percentages.fun
-
-  };
+  return Math.max(
+    0,
+    data.bills / 4
+  );
 
 }
 
 
 
-/* =========================
+/* ====================================
    ENTRY KEY
-========================= */
+==================================== */
 
 function entryKey(
   month,
@@ -1456,9 +1569,173 @@ function entryKey(
 
 
 
-/* =========================
-   SELECTS
-========================= */
+/* ====================================
+   GET WAGE ENTRY
+==================================== */
+
+function getEntry(
+  month,
+  week
+) {
+
+  return Number(
+
+    data.entries[
+      entryKey(
+        month,
+        week
+      )
+    ] || 0
+
+  );
+
+}
+
+
+
+/* ====================================
+   ESSENTIAL TARGET FOR A WEEK
+==================================== */
+
+function essentialTargetForWeek(
+  month,
+  week
+) {
+
+  const base =
+    weeklyEssentialBase();
+
+
+  /*
+    Weeks 1–4:
+    one quarter of monthly essentials.
+  */
+
+  if (
+    week <= 4
+  ) {
+
+    return base;
+
+  }
+
+
+  /*
+    Week 5:
+    catch up anything still missing
+    from the monthly essentials total.
+  */
+
+  let fundedFirstFour = 0;
+
+
+  for (
+    let i = 1;
+    i <= 4;
+    i++
+  ) {
+
+    const wage =
+      getEntry(
+        month,
+        i
+      );
+
+
+    fundedFirstFour +=
+      Math.min(
+        wage,
+        base
+      );
+
+  }
+
+
+  return Math.max(
+    0,
+    data.bills -
+    fundedFirstFour
+  );
+
+}
+
+
+
+/* ====================================
+   CALCULATE ONE WEEK
+==================================== */
+
+function calculateWeek(
+  amount,
+  month,
+  week
+) {
+
+  const essentialTarget =
+    essentialTargetForWeek(
+      month,
+      week
+    );
+
+
+  const essentialsFunded =
+    Math.min(
+      amount,
+      essentialTarget
+    );
+
+
+  const essentialShortfall =
+    Math.max(
+      0,
+      essentialTarget -
+      essentialsFunded
+    );
+
+
+  const remaining =
+    Math.max(
+      0,
+      amount -
+      essentialsFunded
+    );
+
+
+  return {
+
+    essentialTarget,
+
+    essentialsFunded,
+
+    essentialShortfall,
+
+    remaining,
+
+    emergency:
+      remaining *
+      remainderPercentages.emergency,
+
+    investments:
+      remaining *
+      remainderPercentages.investments,
+
+    holiday:
+      remaining *
+      remainderPercentages.holiday,
+
+    fun:
+      remaining *
+      remainderPercentages.fun
+
+  };
+
+}
+
+
+
+/* ====================================
+   MONTH / WEEK SELECT BOXES
+==================================== */
 
 const monthSelect =
   document.getElementById(
@@ -1537,41 +1814,13 @@ for (
 
 
 
-/* =========================
-   GET WEEK ENTRY
-========================= */
-
-function getEntry(
-  month,
-  week
-) {
-
-  return Number(
-
-    data.entries[
-      entryKey(
-        month,
-        week
-      )
-    ] || 0
-
-  );
-
-}
-
-
-
-/* =========================
+/* ====================================
    ALL-TIME TOTALS
-========================= */
+==================================== */
 
 function getAllTotals() {
 
   const totals = {
-
-    wages: 0,
-
-    essentials: 0,
 
     emergency: 0,
 
@@ -1584,48 +1833,60 @@ function getAllTotals() {
   };
 
 
-  Object
-    .values(
-      data.entries
-    )
-    .forEach(
-      value => {
+  for (
+    let month = 1;
+    month <= 10;
+    month++
+  ) {
 
-        const amount =
-          Number(value) || 0;
+    for (
+      let week = 1;
+      week <= 5;
+      week++
+    ) {
 
-
-        const split =
-          splitMoney(
-            amount
-          );
-
-
-        totals.wages +=
-          amount;
+      const amount =
+        getEntry(
+          month,
+          week
+        );
 
 
-        totals.essentials +=
-          split.essentials;
+      if (
+        amount <= 0
+      ) {
 
-
-        totals.emergency +=
-          split.emergency;
-
-
-        totals.investments +=
-          split.investments;
-
-
-        totals.holiday +=
-          split.holiday;
-
-
-        totals.fun +=
-          split.fun;
+        continue;
 
       }
-    );
+
+
+      const result =
+        calculateWeek(
+          amount,
+          month,
+          week
+        );
+
+
+      totals.emergency +=
+        result.emergency;
+
+
+      totals.investments +=
+        result.investments;
+
+
+      totals.holiday +=
+        result.holiday;
+
+
+      totals.fun +=
+        result.fun;
+
+    }
+
+  }
 
 
   return totals;
@@ -1634,9 +1895,9 @@ function getAllTotals() {
 
 
 
-/* =========================
+/* ====================================
    MONTH TOTALS
-========================= */
+==================================== */
 
 function getMonthTotals(
   month
@@ -1646,7 +1907,7 @@ function getMonthTotals(
 
     wages: 0,
 
-    essentials: 0,
+    essentialsFunded: 0,
 
     emergency: 0,
 
@@ -1672,36 +1933,68 @@ function getMonthTotals(
       );
 
 
-    const split =
-      splitMoney(
-        amount
-      );
-
-
     totals.wages +=
       amount;
 
 
-    totals.essentials +=
-      split.essentials;
+    if (
+      amount <= 0
+    ) {
+
+      continue;
+
+    }
+
+
+    const result =
+      calculateWeek(
+        amount,
+        month,
+        week
+      );
+
+
+    totals.essentialsFunded +=
+      result.essentialsFunded;
 
 
     totals.emergency +=
-      split.emergency;
+      result.emergency;
 
 
     totals.investments +=
-      split.investments;
+      result.investments;
 
 
     totals.holiday +=
-      split.holiday;
+      result.holiday;
 
 
     totals.fun +=
-      split.fun;
+      result.fun;
 
   }
+
+
+  /*
+    Never show more essentials
+    funded than the monthly
+    requirement.
+  */
+
+  totals.essentialsFunded =
+    Math.min(
+      totals.essentialsFunded,
+      data.bills
+    );
+
+
+  totals.shortfall =
+    Math.max(
+      0,
+      data.bills -
+      totals.essentialsFunded
+    );
 
 
   return totals;
@@ -1710,9 +2003,9 @@ function getMonthTotals(
 
 
 
-/* =========================
-   LIVE WAGE PREVIEW
-========================= */
+/* ====================================
+   LIVE PREVIEW
+==================================== */
 
 function updatePreview() {
 
@@ -1722,68 +2015,219 @@ function updatePreview() {
     ) || 0;
 
 
-  const split =
-    splitMoney(
-      amount
+  const month =
+    Number(
+      monthSelect.value || 1
     );
+
+
+  const week =
+    Number(
+      weekSelect.value || 1
+    );
+
+
+  const result =
+    calculateWeek(
+      amount,
+      month,
+      week
+    );
+
+
+
+  document.getElementById(
+    "weeklyEssentialNeeded"
+  ).textContent =
+    money.format(
+      result.essentialTarget
+    );
+
+
+
+  if (
+    week <= 4
+  ) {
+
+    document.getElementById(
+      "weeklyEssentialExplanation"
+    ).textContent =
+      "Monthly bills + food ÷ 4";
+
+  }
+  else {
+
+    document.getElementById(
+      "weeklyEssentialExplanation"
+    ).textContent =
+      result.essentialTarget > 0
+        ? "Catching up your monthly essentials"
+        : "Monthly essentials already covered";
+
+  }
+
 
 
   document.getElementById(
     "previewEssentials"
   ).textContent =
     money.format(
-      split.essentials
+      result.essentialsFunded
     );
+
+
+
+  document.getElementById(
+    "previewRemaining"
+  ).textContent =
+    money.format(
+      result.remaining
+    );
+
 
 
   document.getElementById(
     "previewEmergency"
   ).textContent =
     money.format(
-      split.emergency
+      result.emergency
     );
+
 
 
   document.getElementById(
     "previewInvestments"
   ).textContent =
     money.format(
-      split.investments
+      result.investments
     );
+
 
 
   document.getElementById(
     "previewHoliday"
   ).textContent =
     money.format(
-      split.holiday
+      result.holiday
     );
+
 
 
   document.getElementById(
     "previewFun"
   ).textContent =
     money.format(
-      split.fun
+      result.fun
     );
+
+
+
+  const warning =
+    document.getElementById(
+      "essentialShortfallWarning"
+    );
+
+
+  const bonus =
+    document.getElementById(
+      "bonusWeekMessage"
+    );
+
+
+
+  warning.classList.remove(
+    "show"
+  );
+
+
+  bonus.classList.remove(
+    "show"
+  );
+
+
+
+  if (
+    amount > 0 &&
+    result.essentialShortfall > 0
+  ) {
+
+    warning.textContent =
+
+      "You are " +
+      money.format(
+        result.essentialShortfall
+      ) +
+      " short of this week's essentials.";
+
+
+    warning.classList.add(
+      "show"
+    );
+
+  }
+
+
+
+  if (
+    week === 5 &&
+    result.essentialTarget === 0
+  ) {
+
+    bonus.textContent =
+
+      "Bonus week — your monthly essentials are already covered, so this week's wage goes to your other pots.";
+
+
+    bonus.classList.add(
+      "show"
+    );
+
+  }
 
 }
 
 
 
-/* =========================
+/* ====================================
    DASHBOARD
-========================= */
+==================================== */
 
 function updateDashboard() {
 
-  const totals =
+  const allTotals =
     getAllTotals();
 
 
   const emergencyBalance =
     data.startingSavings +
-    totals.emergency;
+    allTotals.emergency;
+
+
+
+  document.getElementById(
+    "topWeeklyEssential"
+  ).textContent =
+    money.format(
+      weeklyEssentialBase()
+    );
+
+
+
+  document.getElementById(
+    "monthlyEssentialsTop"
+  ).textContent =
+    money.format(
+      data.bills
+    );
+
+
+
+  document.getElementById(
+    "investmentTotal"
+  ).textContent =
+    money.format(
+      allTotals.investments
+    );
 
 
 
@@ -1796,23 +2240,14 @@ function updateDashboard() {
 
 
 
-  document.getElementById(
-    "investmentTotal"
-  ).textContent =
-    money.format(
-      totals.investments
-    );
-
-
-
-  let progressPercent = 0;
+  let progress = 0;
 
 
   if (
     data.target > 0
   ) {
 
-    progressPercent =
+    progress =
       Math.min(
         emergencyBalance /
         data.target *
@@ -1827,7 +2262,7 @@ function updateDashboard() {
   document.getElementById(
     "progressBar"
   ).style.width =
-    progressPercent +
+    progress +
     "%";
 
 
@@ -1842,31 +2277,22 @@ function updateDashboard() {
 
 
 
-  if (
+  document.getElementById(
+    "progressTarget"
+  ).textContent =
+
     data.target > 0
-  ) {
 
-    document.getElementById(
-      "progressTarget"
-    ).textContent =
-      money.format(
-        data.target
-      ) +
-      " target";
+      ? money.format(
+          data.target
+        ) +
+        " target"
 
-  }
-  else {
-
-    document.getElementById(
-      "progressTarget"
-    ).textContent =
-      "Target not set";
-
-  }
+      : "Target not set";
 
 
 
-  /* MONTH */
+  /* MONTH SUMMARY */
 
   const month =
     Number(
@@ -1891,16 +2317,7 @@ function updateDashboard() {
 
 
   document.getElementById(
-    "monthEssentials"
-  ).textContent =
-    money.format(
-      monthTotals.essentials
-    );
-
-
-
-  document.getElementById(
-    "monthBills"
+    "monthEssentialsRequired"
   ).textContent =
     money.format(
       data.bills
@@ -1908,30 +2325,62 @@ function updateDashboard() {
 
 
 
-  const remaining =
-    monthTotals.essentials -
-    data.bills;
-
-
-
-  const remainingElement =
-    document.getElementById(
-      "monthRemaining"
-    );
-
-
-
-  remainingElement.textContent =
+  document.getElementById(
+    "monthEssentialsFunded"
+  ).textContent =
     money.format(
-      remaining
+      monthTotals.essentialsFunded
     );
 
 
 
-  remainingElement.className =
-    remaining >= 0
-      ? "green"
-      : "red";
+  document.getElementById(
+    "monthShortfall"
+  ).textContent =
+    money.format(
+      monthTotals.shortfall
+    );
+
+
+
+  const shortfallRow =
+    document.getElementById(
+      "monthShortfallRow"
+    );
+
+
+  if (
+    monthTotals.shortfall <= 0
+  ) {
+
+    shortfallRow.className =
+      "split good-row";
+
+
+    shortfallRow
+      .querySelector("span")
+      .textContent =
+      "Essentials status";
+
+
+    document.getElementById(
+      "monthShortfall"
+    ).textContent =
+      "Covered ✓";
+
+  }
+  else {
+
+    shortfallRow.className =
+      "split warning-row";
+
+
+    shortfallRow
+      .querySelector("span")
+      .textContent =
+      "Essentials shortfall";
+
+  }
 
 
 
@@ -1953,13 +2402,25 @@ function updateDashboard() {
 
 
 
-  /* SETUP CARD */
+  document.getElementById(
+    "monthHoliday"
+  ).textContent =
+    money.format(
+      monthTotals.holiday
+    );
 
-  const hasPlan =
-    data.bills > 0 ||
-    data.startingSavings > 0 ||
-    data.target > 0;
 
+
+  document.getElementById(
+    "monthFun"
+  ).textContent =
+    money.format(
+      monthTotals.fun
+    );
+
+
+
+  /* FIRST-TIME SETUP */
 
   const setupCard =
     document.getElementById(
@@ -1968,7 +2429,7 @@ function updateDashboard() {
 
 
   if (
-    hasPlan
+    data.bills > 0
   ) {
 
     setupCard
@@ -1992,9 +2453,9 @@ function updateDashboard() {
 
 
 
-/* =========================
+/* ====================================
    HISTORY
-========================= */
+==================================== */
 
 function updateHistory() {
 
@@ -2070,9 +2531,15 @@ function updateHistory() {
         entry => {
 
 
-          const split =
-            splitMoney(
-              entry.amount
+          const result =
+            calculateWeek(
+
+              entry.amount,
+
+              entry.month,
+
+              entry.week
+
             );
 
 
@@ -2085,51 +2552,36 @@ function updateHistory() {
               <div>
 
                 <strong>
-
-                  Month
-                  ${entry.month}
-
-                  · Week
-                  ${entry.week}
-
+                  Month ${entry.month}
+                  · Week ${entry.week}
                 </strong>
 
                 <small>
-
                   ${money.format(
-                    split.investments
+                    result.essentialsFunded
+                  )}
+                  essentials
+                  ·
+                  ${money.format(
+                    result.investments
                   )}
                   invested
-
-                  ·
-
-                  ${money.format(
-                    split.emergency
-                  )}
-                  emergency
-
                 </small>
 
               </div>
 
 
               <div
-                style="
-                  text-align:right
-                "
+                style="text-align:right"
               >
 
                 <strong>
-
                   ${money.format(
                     entry.amount
                   )}
-
                 </strong>
 
-
                 <br>
-
 
                 <button
                   class="delete"
@@ -2181,9 +2633,9 @@ function updateHistory() {
 
 
 
-/* =========================
+/* ====================================
    LOAD SELECTED WEEK
-========================= */
+==================================== */
 
 function loadSelectedWeek() {
 
@@ -2218,9 +2670,9 @@ function loadSelectedWeek() {
 
 
 
-/* =========================
+/* ====================================
    SETTINGS FORM
-========================= */
+==================================== */
 
 function updateSettingsForm() {
 
@@ -2242,8 +2694,7 @@ function updateSettingsForm() {
 
     data.startingSavings > 0
 
-      ? data.startingSavings
-          .toFixed(2)
+      ? data.startingSavings.toFixed(2)
 
       : "";
 
@@ -2263,9 +2714,9 @@ function updateSettingsForm() {
 
 
 
-/* =========================
+/* ====================================
    REFRESH APP
-========================= */
+==================================== */
 
 function refreshEverything() {
 
@@ -2281,42 +2732,57 @@ function refreshEverything() {
 
 
 
-/* =========================
-   EVENT LISTENERS
-========================= */
+/* ====================================
+   EVENTS
+==================================== */
 
-wageInput
-  .addEventListener(
-    "input",
-    updatePreview
-  );
-
+wageInput.addEventListener(
+  "input",
+  updatePreview
+);
 
 
-monthSelect
-  .addEventListener(
-    "change",
-    loadSelectedWeek
-  );
+monthSelect.addEventListener(
+  "change",
+  loadSelectedWeek
+);
 
 
-
-weekSelect
-  .addEventListener(
-    "change",
-    loadSelectedWeek
-  );
+weekSelect.addEventListener(
+  "change",
+  loadSelectedWeek
+);
 
 
 
-/* =========================
+/* ====================================
    SAVE WEEK
-========================= */
+==================================== */
 
 document.getElementById(
   "saveWeek"
 ).onclick =
   () => {
+
+
+    if (
+      data.bills <= 0
+    ) {
+
+      alert(
+        "Set your monthly bills + food first so the app can calculate your weekly essentials."
+      );
+
+
+      openView(
+        "settings"
+      );
+
+
+      return;
+
+    }
+
 
 
     const amount =
@@ -2392,21 +2858,17 @@ document.getElementById(
       );
 
 
-    message
-      .classList
-      .add(
-        "show"
-      );
+    message.classList.add(
+      "show"
+    );
 
 
     setTimeout(
       () => {
 
-        message
-          .classList
-          .remove(
-            "show"
-          );
+        message.classList.remove(
+          "show"
+        );
 
       },
       1200
@@ -2416,9 +2878,9 @@ document.getElementById(
 
 
 
-/* =========================
+/* ====================================
    SAVE SETTINGS
-========================= */
+==================================== */
 
 document.getElementById(
   "saveSettings"
@@ -2489,21 +2951,17 @@ document.getElementById(
       );
 
 
-    message
-      .classList
-      .add(
-        "show"
-      );
+    message.classList.add(
+      "show"
+    );
 
 
     setTimeout(
       () => {
 
-        message
-          .classList
-          .remove(
-            "show"
-          );
+        message.classList.remove(
+          "show"
+        );
 
       },
       1200
@@ -2513,9 +2971,9 @@ document.getElementById(
 
 
 
-/* =========================
-   NEW USER SETUP BUTTON
-========================= */
+/* ====================================
+   SETUP BUTTON
+==================================== */
 
 document.getElementById(
   "setupButton"
@@ -2530,9 +2988,9 @@ document.getElementById(
 
 
 
-/* =========================
+/* ====================================
    RESET WAGES
-========================= */
+==================================== */
 
 document.getElementById(
   "resetWages"
@@ -2541,19 +2999,14 @@ document.getElementById(
 
 
     if (
-
       confirm(
         "Clear all saved wage entries?"
       )
-
     ) {
-
 
       data.entries = {};
 
-
       wageInput.value = "";
-
 
       saveData();
 
@@ -2565,9 +3018,9 @@ document.getElementById(
 
 
 
-/* =========================
-   RESET ENTIRE PLAN
-========================= */
+/* ====================================
+   RESET EVERYTHING
+==================================== */
 
 document.getElementById(
   "resetEverything"
@@ -2576,13 +3029,10 @@ document.getElementById(
 
 
     if (
-
       confirm(
-        "Reset your entire plan? This clears bills, savings, target and wage history."
+        "Reset your entire plan? This clears your bills, savings, target and wage history."
       )
-
     ) {
-
 
       data = {
 
@@ -2599,12 +3049,9 @@ document.getElementById(
 
       saveData();
 
-
       wageInput.value = "";
 
-
       refreshEverything();
-
 
       openView(
         "home"
@@ -2616,9 +3063,9 @@ document.getElementById(
 
 
 
-/* =========================
+/* ====================================
    NAVIGATION
-========================= */
+==================================== */
 
 function openView(
   viewName
@@ -2632,11 +3079,9 @@ function openView(
     .forEach(
       view => {
 
-        view
-          .classList
-          .remove(
-            "active"
-          );
+        view.classList.remove(
+          "active"
+        );
 
       }
     );
@@ -2647,8 +3092,7 @@ function openView(
     .getElementById(
       viewName
     )
-    .classList
-    .add(
+    .classList.add(
       "active"
     );
 
@@ -2661,20 +3105,17 @@ function openView(
     .forEach(
       button => {
 
-        button
-          .classList
-          .toggle(
+        button.classList.toggle(
 
-            "active",
+          "active",
 
-            button.dataset.view ===
-            viewName
+          button.dataset.view ===
+          viewName
 
-          );
+        );
 
       }
     );
-
 
 
   window.scrollTo(
@@ -2707,9 +3148,9 @@ document
 
 
 
-/* =========================
-   INSTALL APP
-========================= */
+/* ====================================
+   INSTALL
+==================================== */
 
 let installPrompt =
   null;
@@ -2726,13 +3167,10 @@ window.addEventListener(
   "beforeinstallprompt",
   event => {
 
-
     event.preventDefault();
-
 
     installPrompt =
       event;
-
 
     installCard
       .classList
@@ -2759,11 +3197,9 @@ document.getElementById(
         "Use your browser menu and choose Add to Home screen or Install app."
       );
 
-
       return;
 
     }
-
 
 
     installPrompt.prompt();
@@ -2803,9 +3239,9 @@ window.addEventListener(
 
 
 
-/* =========================
+/* ====================================
    SERVICE WORKER
-========================= */
+==================================== */
 
 if (
   "serviceWorker"
@@ -2832,9 +3268,9 @@ if (
 
 
 
-/* =========================
-   START APP
-========================= */
+/* ====================================
+   START
+==================================== */
 
 monthSelect.value =
   "1";
@@ -2851,7 +3287,6 @@ loadSelectedWeek();
 
 
 </script>
-
 
 </body>
 </html>
